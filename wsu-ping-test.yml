@@ -1,0 +1,11 @@
+### run cmd:  ansible-playbook  -i inventory_file   wsu-pre_patching-v3.yml -kK
+---
+- name: ping test of all servers as part of chnage 
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ping test oal all servers
+#      action: ping 
+      ping:
+    
+        

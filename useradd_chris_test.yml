@@ -1,0 +1,43 @@
+---
+- name: User
+  hosts: all
+  become: yes
+  tasks:
+#    - name: Create the user
+#      shell: useradd -p '$1$8eW6yJBS$0Fc44kXAGmGkEFyrCFFfP.' -s /bin/bash -m -c "Sharadha Sangem DBA" -u 30053074  30053074;
+#      ignore_errors: true
+#    - name: Deleate user
+#      shell: userdel -r sa90945657
+#      ignore_errors: true
+########################################
+#######################################
+#     - name: User Remove
+#       user:
+#           name: sa90945657
+#           state: absent
+#           remove: yes
+#############################################
+#############################################
+     - name: User new create
+       user:
+           name={{ item.name }}
+           state=present
+           comment={{ item.comment }}
+           password=$5$B9qLm0RJ$z9sW8smnamJFzDonbaOzcVEdaj4K5hQnjzr/vB2l/52
+           update_password=on_create
+           createhome=yes
+           groups={{ item.groups }}
+       with_items:
+            - { name: 'sa90946886', comment: 'Chris Andreev - REQ0550108', groups: 'wheel'}
+#            - { name: '90942988', comment: 'Rao Yerramsetty -REQ0496658', groups: 'users'}
+#            - { name: '90945657', comment: 'Chris J Thompson'}
+#            - { name: '30006940', comment: 'Jagdish Thakwani'}
+###########################################
+###########################################
+#     - name: Change User Password 
+#       user:
+#         name=9430031
+#         update_password=always
+#         password=$5$QfGC6XEd$/kUEEPbBkVZ3U3c.gZJIIVvfFq/VEQdPhWj4vjBwOMB
+#########################################
+#########################################
